@@ -1,0 +1,115 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DebtFree - Calculadora de Dívidas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .resultado {
+      margin-top: 15px;
+      padding: 10px;
+      background: #e9f7ef;
+      border-left: 5px solid #4CAF50;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Dívidas</h1>
+    <label for="divida">Valor da dívida (€):</label>
+    <input type="number" id="divida" placeholder="Ex: 10000">
+
+    <label for="juros">Juros ao mês (%):</label>
+    <input type="number" id="juros" placeholder="Ex: 2">
+
+    <label for="pagamento">Pagamento mensal (€):</label>
+    <input type="number" id="pagamento" placeholder="Ex: 300">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado" class="resultado" style="display:none;"></div>
+  </div>
+
+  <script>
+    function calcular() {
+      let divida = parseFloat(document.getElementById("divida").value);
+      let juros = parseFloat(document.getElementById("juros").value) / 100;
+      let pagamento = parseFloat(document.getElementById("pagamento").value);
+      let meses = 0;
+
+      if (!divida || !pagamento) {
+        alert("Preencha todos os campos corretamente!");
+        return;
+      }
+
+      while (divida > 0 && meses < 1000) {
+        divida = divida + (divida * juros) - pagamento;
+        meses++;
+        if (divida <= 0) break;
+      }
+
+      let resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.style.display = "block";
+
+      if (meses >= 1000) {
+        resultadoDiv.innerHTML = "⚠️ O pagamento mensal não é suficiente para cobrir os juros.";
+      } else {
+        let anos = Math.floor(meses / 12);
+        let mesesRestantes = meses % 12;
+        resultadoDiv.innerHTML = `Você quitará sua dívida em <b>${anos} anos e ${mesesRestantes} meses</b>.`;
+      }
+    }
+  </script>
+</body>
+</html>
+```
