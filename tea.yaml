@@ -1,0 +1,21 @@
+project:
+  name: debtfree-calculator
+  description: "Calculadora simples para estimar tempo de quitação de dívidas com base em juros e pagamento mensal."
+  repository: "https://github.com/edsonelefantegrande/debtfree"
+  maintainers:
+    - github: edsonelefantegrande
+
+governance:
+  voting:
+    quorum: 1
+    approval: 50%
+  roles:
+    - name: maintainer
+      permissions:
+        - merge
+        - release
+        - update-config
+
+rewards:
+  distribution:
+    maintainer: 100%
