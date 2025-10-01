@@ -1,0 +1,22 @@
+{
+  "name": "debtfree-calculator",
+  "version": "0.1.0",
+  "description": "Calculadora simples para estimar tempo de quitação de dívidas com base em juros e pagamento mensal.",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Abra index.html no navegador'"
+  },
+  "keywords": [
+    "finance",
+    "debt",
+    "calculator",
+    "open-source",
+    "tea"
+  ],
+  "author": "Edson Elefante Grande",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edsonelefantegrande/debtfree.git"
+  }
+}
